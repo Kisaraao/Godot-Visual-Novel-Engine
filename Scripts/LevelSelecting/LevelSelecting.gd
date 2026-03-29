@@ -2,6 +2,7 @@ extends Control
 
 @export var level_box : PackedScene
 @export var test : LevelData
+@export var camera : Camera2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,7 +17,7 @@ func _ready() -> void:
 		load(head + "Smurf" + feet),
 		load(head + "Emperor" + feet),
 		load(head + "JadeBird" + feet),
-		load(head + "LaQiLaBiao" + feet),
+		load(head + "FateOfGuoJiang" + feet),
 		load(head + "MobileAppDevelop" + feet),
 		load(head + "YuHuaBiaonia" + feet),
 		load(head + "Yz" + feet),

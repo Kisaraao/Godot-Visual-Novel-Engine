@@ -3,16 +3,19 @@ extends Area2D
 @export var level : LevelData
 @export var cam : Camera2D
 
+@export var label : Label
+@export var bg : TextureRect
+
 var is_enterd : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	modulate = Color(0.8, 0.8, 0.8)
+	modulate = Color(0.9, 0.9, 0.9)
 	$Hover.modulate.a = 0
 	position = level.position
 	name = level.name
-	$Label.text = level.name
-	$bg.texture = level.badge
+	label.text = level.name
+	bg.texture = level.badge
 
 func _process(delta: float) -> void:
 	if is_enterd and Time.get_ticks_msec() % 5 == 0:
@@ -31,16 +34,16 @@ func _on_mouse_entered() -> void:
 	$Cover.modulate = Color(1.3, 1.3, 1.3)
 	var tween = create_tween()
 	tween.set_parallel(true)
-	tween.tween_property($Hover, "modulate:a", 1, 0.1).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property($Hover, "modulate:a", 0.5, 0.1).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "modulate", Color.WHITE, 0.1).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(self, "scale", Vector2(1, 1), 0.1).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "scale", Vector2(1.15, 1.15), 0.1).set_ease(Tween.EASE_IN_OUT)
 
 func _on_mouse_exited() -> void:
 	is_enterd = false
 	rotation = 0
-	$Cover.modulate = Color.WHITE
+	$Cover.modulate = Color.WHITE	
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property($Hover, "modulate:a", 0, 0.1).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(self, "modulate", Color(0.8, 0.8, 0.8), 0.1).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(self, "scale", Vector2(0.8, 0.8), 0.1).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "modulate", Color(0.9, 0.9, 0.9), 0.1).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "scale", Vector2(0.9, 0.9), 0.1).set_ease(Tween.EASE_IN_OUT)

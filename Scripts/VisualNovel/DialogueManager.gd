@@ -142,14 +142,12 @@ func display_next_dialogue() -> void:
 		camera.rotation_smoothing_enabled = next_dialogue.rotation_smoothing
 		if next_dialogue.position + Vector2(960, 540) != camera.position:
 			camera.position = next_dialogue.position + Vector2(960, 540)
-		if next_dialogue.zoom != camera.zoom:
-			if next_dialogue.zoom_smoothing:
-				var tween = create_tween()
-				tween.tween_property(camera, "zoom", next_dialogue.zoom, next_dialogue.zoom_speed).set_ease(Tween.EASE_OUT)
-			else:
-				camera.zoom = next_dialogue.zoom
-		if deg_to_rad(next_dialogue.rotation) != camera.rotation:
-			camera.rotation = deg_to_rad(next_dialogue.rotation)
+		if next_dialogue.zoom_smoothing:
+			var tween = create_tween()
+			tween.tween_property(camera, "zoom", next_dialogue.zoom, next_dialogue.zoom_speed).set_ease(Tween.EASE_OUT)
+		else:
+			camera.zoom = next_dialogue.zoom
+		camera.rotation = deg_to_rad(next_dialogue.rotation)
 		if next_dialogue.is_shake:
 			shake(next_dialogue.shake_duration, next_dialogue.shake_strength)
 		
