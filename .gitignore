@@ -1,0 +1,16 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# my ignores
+Assets/
+Audio/
+Scenes/
+Places/
+Levels/
+Fonts/
+Characters/
+icon.svg
+icon.svg.import
+project.godot
+.editorconfig
